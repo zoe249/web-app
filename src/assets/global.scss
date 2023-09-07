@@ -1,0 +1,380 @@
+// @import './small-screen.scss';
+// css初始化 开始
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+}
+* {
+  box-sizing: border-box;
+}
+textarea,
+.el-textarea__inner {
+  resize: none;
+}
+img {
+  border: 0;
+  vertical-align: middle;
+}
+table {
+  border-collapse: collapse;
+}
+
+// css初始化结束
+
+// 常用css 开始
+
+$--yp-page-background: #f8fafd;
+$--yp-table-header-background: #f8fafd;
+$--menu-width: 181px;
+
+.flex-container {
+  display: flex;
+}
+.flex-column-container {
+  display: flex;
+  flex-direction: column;
+}
+.grow-container {
+  flex-grow: 1;
+}
+.grow-form-item.el-form-item {
+  & > .el-form-item__content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+}
+.flex-column-grow-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.flex-align-center {
+  align-items: center;
+}
+// 常用css 结束
+.el-input {
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+  }
+}
+
+.yp-small-scroll {
+  &::-webkit-scrollbar-thumb {
+    background: #dbdbdb;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #f6f6f6;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+}
+// .el-scrollbar::-webkit-scrollbar {
+//   width: 0;
+//   height: 0;
+// }
+.home-main-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin-left: $--menu-width;
+  background: $--yp-page-background;
+  .home-main-container--body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+  }
+}
+.yp-home-horizontal-tabs-content {
+  background: $--yp-page-background;
+  display: flex;
+  .el-tabs {
+    flex-grow: 1;
+    background: #ffffff;
+  }
+  .more-operate-buttons {
+    background: #ffffff;
+    border-bottom: 1px solid #e4e7ed;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    .el-dropdown {
+      margin-right: 16px;
+    }
+  }
+  .el-tabs__header.is-top {
+    margin: 0;
+  }
+}
+.menu-no-collapse-app {
+  .home-left-container {
+    transition: width 0.2s;
+  }
+  .home-main-container {
+    transition: margin-left 0.2s;
+  }
+  // .menu-content {
+  //   transition: width .2s;
+  //   .el-menu {
+  //     transition: width .2s;
+  //   }
+  // }
+}
+.menu-collapse-app {
+  $--menu-width: 64px;
+  .home-left-container {
+    width: $--menu-width;
+    transition: width 0.3s;
+  }
+  .home-main-container {
+    margin-left: $--menu-width;
+    transition: margin-left 0.3s;
+  }
+  // .collapse-button-content {
+  //   transition: width .15s;
+  // }
+  .menu-content {
+    transition: width 0.3s;
+    .el-menu {
+      transition: width 0.3s;
+    }
+  }
+}
+
+.yp-page-container {
+  min-width: 800px;
+  // min-height: 600px;
+  // background: $--yp-page-background;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.vxe-table {
+  .vxe-table--border-line {
+    border: none;
+  }
+}
+.vxe-table--render-default.border--default .vxe-table--header-wrapper,
+.vxe-table--render-default.border--full .vxe-table--header-wrapper,
+.vxe-table--render-default.border--outer .vxe-table--header-wrapper,
+.vxe-table--render-default.border--inner .vxe-table--header-wrapper,
+.vxe-table--render-default.border--none .vxe-table--header-wrapper {
+  background-color: $--yp-table-header-background;
+  // background-color: #F8FAFD;
+}
+.yp-valid-table {
+  // .valid-column {
+  //   .vxe-cell {
+  //     max-height: calc(48px + 24px);
+  //   }
+  // }
+  &.has-textarea-table {
+    .yp-cell--inner.yp-col--valid-error {
+      padding: 20px 0;
+    }
+  }
+  &.vxe-table--render-default {
+    .yp-valid-error-row {
+      .col--edit.valid-column.yp-valid-error-cell {
+        vertical-align: top;
+      }
+    }
+    .vxe-body--column.col--ellipsis > .vxe-cell,
+    .vxe-footer--column.col--ellipsis > .vxe-cell,
+    .vxe-header--column.col--ellipsis > .vxe-cell {
+      // max-height: 80px;
+      // height: 80px;
+      // padding: 20px 4px;
+      // position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .valid-column {
+      // height: 80px;
+      .valid-msg {
+        font-size: 12px;
+        line-height: 1;
+        position: absolute;
+        bottom: 3px;
+        left: 4px;
+        right: 4px;
+        color: red;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+  .yp-cell--inner {
+    width: 100%;
+  }
+  .col--valid-error {
+    & > .vxe-cell,
+    & > .vxe-tree-cell {
+      .yp-cell--inner {
+        & > .el-input,
+        & > .el-autocomplete,
+        & > .el-input-number,
+        & > .el-select,
+        & > .el-cascader,
+        & > .el-date-picker {
+          .el-input__inner {
+            border-color: #f56c6c;
+          }
+        }
+      }
+    }
+  }
+  .yp-col--valid-error {
+    & > .el-input,
+    & > .el-autocomplete,
+    & > .el-input-number,
+    & > .el-select,
+    & > .el-cascader,
+    & > .el-date-picker {
+      .el-input__inner {
+        border-color: #f56c6c;
+      }
+    }
+  }
+}
+// .vxe-table--fixed-wrapper {
+//   .vxe-table--fixed-left-wrapper {
+//     .vxe-table--header-wrapper.fixed-left--wrapper {
+//       .vxe-header--column.col--fixed:nth-last-type(50) {
+//         border-width: 2px;
+//         background: red;
+//       }
+//     }
+//   }
+// }
+
+.el-dialog__wrapper.dialog-no-padding > .el-dialog > .el-dialog__body {
+  padding: 0;
+}
+.yp-column-select {
+  .el-select-dropdown__item {
+    height: auto;
+  }
+}
+
+.select-item {
+  display: flex;
+  white-space: normal;
+  .select-item-cell {
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+  .select-item-cell + .select-item-cell {
+    margin-left: 4px;
+  }
+}
+// yc
+.input-number-no-btn {
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+  }
+  input {
+    // 火狐
+    -moz-appearance: textfield;
+  }
+}
+// yc
+// @media print {
+//   @page {
+//     // size: B5;
+//     // counter-reset: page;
+//     // counter-increment: page;
+//     // margin-top: 200px;
+//     @top-left {
+//       content: '123';
+//     }
+//   }
+//   @page:first {
+//     // margin-top: 0px;
+//   }
+//   .menu-footer::before {
+//     counter-increment: pages;
+//     content: counter(page)'你好'counter(pages);
+//   }
+//   tr {
+//     page-break-inside: avoid;
+//   }
+// }
+.home-container {
+  & > .el-header {
+    height: 60px;
+  }
+}
+.home-body-container {
+  margin-top: 60px;
+}
+// 左侧菜单栏
+.home-left-container {
+  top: 60px;
+  width: $--menu-width;
+}
+// 二级菜单栏
+.child-menu-list-container {
+}
+// .vxe-table--render-default .vxe-body--column:not(.col--ellipsis),
+// .vxe-table--render-default .vxe-footer--column:not(.col--ellipsis),
+// .vxe-table--render-default .vxe-header--column:not(.col--ellipsis) {
+//   padding: 0;
+// }
+
+.button-class-add {
+  min-width: 80px;
+}
+// yc
+.input-color-blue {
+  .el-input__inner {
+    border: 1px solid #2f54eb;
+  }
+  .el-textarea__inner {
+    border: 1px solid #2f54eb;
+  }
+  .is-disabled > .el-textarea__inner {
+    border: 1px solid #e4e7ed;
+  }
+}
+// update by qiaokun 2021-12-16 改全局方案放弃，自行加 start
+// .el-input__inner {
+//   border: 1px solid #2f54eb !important; // add by qiaokun 2021-12-16
+// }
+// .el-textarea__inner {
+//   border: 1px solid #2f54eb !important; // add by qiaokun 2021-12-16
+// }
+// .yp-valid-table {
+//   ::v-deep .el-input__inner {
+//     border: 1px solid #2f54eb !important; // add by qiaokun 2021-12-16
+//   }
+// }
+//  .is-disabled > .el-input__inner {
+//   border: 1px solid #e4e7ed !important;  // add by qiaokun 2021-12-16
+// }
+// ::v-deep .yp-query-search-form-item > .el-input__inner {
+//   border: 1px solid #e4e7ed !important;
+// }
+// update by qiaokun 2021-12-16 改全局方案放弃，自行加 end
